@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   db:
@@ -7,7 +7,7 @@ services:
       - ./db_data:/var/lib/mysql
 #      - ./sql/mysql_dump.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
     restart: always
-    container_name: mysql-bgm
+    container_name: mysql-nuk
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress
@@ -19,7 +19,6 @@ services:
       - db
     build:
       context: .
-#   image: wordpress:4.4
     volumes:
       - ./themes:/var/www/html/wp-content/themes
       - ./plugins:/var/www/html/wp-content/plugins
@@ -29,9 +28,11 @@ services:
     ports:
       - "8000:80"
     restart: always
-    container_name: wp-bgm
+    container_name: wp-nuk
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
 
+
+;; 修正時刻: Mon Jan 31 13:22:38 2022
