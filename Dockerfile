@@ -4,13 +4,14 @@ MAINTAINER Seiichi Nukayama <billie175@gmail.com>
 
 # 必要なツール類
 RUN apt-get update
-RUN apt-get -y install wget unzip vim less
+RUN apt-get -y install wget unzip vim less tzdata
 
 # wpプラグイン(zip) ダウンロード
 WORKDIR /tmp/wp-plugins
 RUN wget https://downloads.wordpress.org/plugin/wp-multibyte-patch.2.8.1.zip
-# RUN wget https://downloads.wordpress.org/plugin/tablepress.1.9.1.zip
-# RUN wget https://downloads.wordpress.org/plugin/simple-map.4.9.0.zip
+
+# php.ini のコピー
+COPY ./php/php.ini /usr/local/etc/php/ 
 
 # zipファイルの解凍とインストール
 RUN unzip './*.zip' -d /usr/src/wordpress/wp-content/plugins
