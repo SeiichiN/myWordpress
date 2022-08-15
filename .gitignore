@@ -1,5 +1,7 @@
-db_data
-plugins
-themes
+db_data/
+plugins/
+themes/
+uploads/
 *~
+_*
 
